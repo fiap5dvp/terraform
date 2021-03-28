@@ -10,15 +10,6 @@ resource "aws_security_group" "eks-worker-sg" {
   }
 
   ingress {
-    cidr_blocks = ["172.31.0.0/16"]
-    description = "Loft sa-east-1"
-    from_port   = "0"
-    protocol    = "-1"
-    self        = "false"
-    to_port     = "0"
-  }
-
-  ingress {
     description = "Allow node to communicate with each other"
     from_port   = "0"
     protocol    = "-1"
@@ -44,23 +35,6 @@ resource "aws_security_group" "eks-worker-sg" {
     to_port         = "443"
   }
 
-  ingress {
-    cidr_blocks = ["10.0.0.0/8"]
-    description = "Loft Production VPC"
-    from_port   = "0"
-    protocol    = "-1"
-    self        = "false"
-    to_port     = "0"
-  }
-
-  ingress {
-    cidr_blocks = ["192.168.248.0/21"]
-    description = "Mongo Atlas Peering"
-    from_port   = "0"
-    protocol    = "-1"
-    self        = "false"
-    to_port     = "0"
-  }
 
   name = "${var.cluster_name}-${var.group_name}-${var.node_name}"
 
