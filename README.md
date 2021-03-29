@@ -106,4 +106,4 @@ Caso aconteça algum erro no modulo ele não faz rollback, é necessário reexec
 
 ### Validar se todos os recursos de infraestrutura foram criados
 
-Verificar via [Console](https://337161345835.signin.aws.amazon.com/console), é possivel usar o `terraform show` para validar o que foi criado.
+Verificar via [Console](https://signin.aws.amazon.com/console), é possivel usar o `terraform show` para validar o que foi criado.
