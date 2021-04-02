@@ -15,11 +15,11 @@ resource "aws_iam_role" "eks-role-worker" {
 POLICY
 
   max_session_duration = "3600"
-  name                 = "${var.cluster_name}-${var.group_name}-${var.node_name}"
+  name                 = "${var.cluster_name}-${var.node_name}"
   path                 = "/"
 
   tags = {
-    Name        = "${var.cluster_name}-${var.group_name}-${var.node_name}"
+    Name        = "${var.cluster_name}-${var.node_name}"
   }
 }
 

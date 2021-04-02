@@ -11,7 +11,7 @@ data "template_file" "container_instance_base_cloud_config" {
   vars = {
     cluster_name    = var.cluster_name
     cluster_version = var.cluster_version
-    group_name      = var.group_name
+    group_name      = var.node_name
   }
 }
 
@@ -31,18 +31,12 @@ data "aws_ami" "ami" {
   owners = ["602401143452"] # Amazon
 }
 
-data "archive_file" "lambdazip" {
-  type        = "zip"
-  output_path = "${path.module}/lambda_functions.zip"
-  source_dir  = "${path.module}/scripts/"
-}
-
 variable "key_name" {
   description = "Insert the name of public key"
 }
 
 variable "max_instances" {
-  default = 15
+  default = 3
 }
 
 variable "min_instances" {
@@ -53,20 +47,19 @@ variable "desired_capacity" {
   default = 1
 }
 
-variable volume_size {
+variable "volume_size" {
   type    = string
-  default = "250"
+  default = "80"
 }
 
-variable instance_type {
+variable "instance_type" {
   type    = string
-  default = "m5.xlarge"
+  default = "t2.large"
 }
 
-variable eks_master_sg_id {}
-variable cluster_name {}
-variable cluster_version {}
-variable vpc_name {}
-variable subnet_id_master {}
-variable group_name {}
-variable node_name {}
+variable "eks_master_sg_id" {}
+variable "cluster_name" {}
+variable "cluster_version" {}
+variable "vpc_name" {}
+variable "subnet_id_master" {}
+variable "node_name" {}
