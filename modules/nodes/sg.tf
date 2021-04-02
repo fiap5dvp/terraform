@@ -36,10 +36,10 @@ resource "aws_security_group" "eks-worker-sg" {
   }
 
 
-  name = "${var.cluster_name}-${var.group_name}-${var.node_name}"
+  name = "${var.cluster_name}-${var.node_name}"
 
   tags = {
-    Name                                        = "${var.cluster_name}-${var.group_name}-${var.node_name}"
+    Name                                        = "${var.cluster_name}-${var.node_name}"
     "kubernetes.io/cluster/${var.cluster_name}" = "owned"
   }
 
