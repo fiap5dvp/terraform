@@ -1,10 +1,5 @@
 resource "aws_iam_role_policy_attachment" "cluster-autoScaler-fullAccess" {
-  policy_arn = "arn:aws:iam::337161345835:policy/Cluster_AutoScaler_FullAccess"
-  role       = aws_iam_role.eks-role-worker.name
-}
-
-resource "aws_iam_role_policy_attachment" "databricks-bucket-readonly-access" {
-  policy_arn = "arn:aws:iam::337161345835:policy/s3-databricks-bucket-readonly-access"
+  policy_arn = var.autoscaling_role
   role       = aws_iam_role.eks-role-worker.name
 }
 

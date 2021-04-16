@@ -15,7 +15,7 @@ resource "aws_security_group" "eks-master-sg" {
 }
 
 resource "aws_security_group_rule" "ingress_tcp_443_sg" {
-  cidr_blocks       = ["${chomp(data.http.myip.body)}/32", "172.31.0.0/16"]
+  cidr_blocks       = ["${chomp(data.http.myip.body)}/32", data.aws_vpc.vpc_name.cidr_block]
   description       = "Default access"
   from_port         = "443"
   protocol          = "tcp"

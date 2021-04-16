@@ -36,7 +36,7 @@ variable "key_name" {
 }
 
 variable "max_instances" {
-  default = 3
+  default = 1
 }
 
 variable "min_instances" {
@@ -63,3 +63,4 @@ variable "cluster_version" {}
 variable "vpc_name" {}
 variable "subnet_id_master" {}
 variable "node_name" {}
+variable "autoscaling_role" {}

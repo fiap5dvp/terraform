@@ -38,9 +38,41 @@ data "http" "myip" {
   url = "http://ipv4.icanhazip.com"
 }
 
+data "aws_iam_policy_document" "autoscaling_policy_doc" {
+  statement {
+    actions = [
+      "autoscaling:DescribeAutoScalingGroups",
+      "autoscaling:DescribeAutoScalingInstances",
+      "autoscaling:DescribeLaunchConfigurations",
+      "autoscaling:DescribeTags",
+      "autoscaling:SetDesiredCapacity",
+      "autoscaling:TerminateInstanceInAutoScalingGroup",
+      "ec2:DescribeLaunchTemplateVersions"
+    ]
+    resources = ["*"]
+    effect    = "Allow"
+  }
+}
 
-variable "cluster_name" {}
-variable "cluster_version" {}
-variable "vpc_name" {}
-variable "public_subnet_cidr_master" {}
-variable "public_subnet_cidr_slave" {}
+variable "cluster_name" {
+  type        = string
+  description = "Cluster Name was created"
+}
+
+variable "cluster_version" {
+  type        = string
+  description = "Cluster Version"
+}
+
+variable "vpc_name" {
+  type        = string
+  description = "VPC Name that the cluster that will be created"
+}
+variable "public_subnet_cidr_master" {
+  type        = string
+  description = "Core network CIDR block"
+}
+variable "public_subnet_cidr_slave" {
+  type        = string
+  description = "Secondy network CIDR block"
+}
