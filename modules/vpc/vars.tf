@@ -3,67 +3,13 @@ variable "vpc_cidr" {
   default     = "10.60.0.0/16"
 }
 
-variable "levee_ip" {
-  description = "Configure Levee IP " ###run curl ifconfig.io and insert value
-
-}
-
-variable "public_subnet_cidr-1a" {
-  description = "CIDR for the public subnet-1a"
-  default     = "10.60.1.0/24"
-}
-
-
-variable "public_subnet_cidr-1b" {
-  description = "CIDR for the public subnet-1b"
-  default     = "10.60.2.0/24"
-}
-
-
-variable "public_subnet_cidr-1c" {
-  description = "CIDR for the public subnet-1c"
-  default     = "10.60.4.0/24"
-}
-
-variable "public_subnet_cidr-1d" {
-  description = "CIDR for the public subnet-1d"
-  default     = "10.60.5.0/24"
-}
-
-variable "public_subnet_cidr-1e" {
-  description = "CIDR for the public subnet-1e"
-  default     = "10.60.6.0/24"
-}
-
-variable "public_subnet_cidr-1f" {
-  description = "CIDR for the public subnet-1f"
-  default     = "10.60.7.0/24"
-}
-
 variable "vpn_cidr" {
   description = "CIDR for the VPC"
   default     = "10.60.3.0/16"
 }
 
-variable "private_subnet_cidr-1a" {
-  description = "CIDR for the private subnet-1a"
-  default     = "10.60.10.0/24"
-}
-
-variable "private_subnet_cidr-1b" {
-  description = "CIDR for the private subnet-1b"
-  default     = "10.60.12.0/24"
-}
-
-variable "private_subnet_cidr-1c" {
-  description = "CIDR for the private subnet-1c"
-  default     = "10.60.14.0/24"
-}
-
-
-variable "private_subnet_cidr-1d" {
-  description = "CIDR for the private subnet-1d"
-  default     = "10.60.16.0/24"
+data "aws_availability_zones" "available" {
+  state = "available"
 }
 
 #### Nat ec2 parameters
@@ -114,11 +60,6 @@ variable "instance_type_vpn" {
   default     = "t3a.medium"
 }
 
-variable "vpn_num_instances" {
-  default = 1
-
-}
-
 variable "vpn_playbook" {
   description = "Ansible playbook to do nat server"
   default     = "ansible/vpn.yml"
@@ -128,14 +69,6 @@ variable "dns_server" {
 
 }
 
-variable "dns_zone" {
-  description = "Define the dns zone, only name because use hardcode empregoligado.net"
-
-}
-
-variable "dns_name" {
-  description = "Define the dns name to use on VPN, only the name of vpn, because use var.dns_zone.empregoligado.net."
-}
 variable "account_name" {
   description = "Tell account name"
 }
@@ -144,3 +77,13 @@ data "http" "myip" {
   url = "http://ipv4.icanhazip.com"
 }
 
+variable "env" {
+  type = string
+
+}
+
+variable "max_subnet_count" {
+  type    = number
+  default = 2
+
+}

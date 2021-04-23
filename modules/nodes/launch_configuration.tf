@@ -2,7 +2,7 @@ resource "aws_launch_configuration" "launch_config" {
   name_prefix                 = "${var.cluster_name}-${var.node_name}-launch-config"
   image_id                    = data.aws_ami.ami.id
   instance_type               = var.instance_type
-  security_groups             = ["sg-0b62a440e104e0833"] ## Mudar
+  security_groups             = [aws_security_group.eks-worker-sg.id]
   key_name                    = var.key_name
   associate_public_ip_address = true
   user_data                   = base64encode(data.template_file.container_instance_base_cloud_config.rendered)

@@ -1,14 +1,13 @@
 resource "aws_instance" "vpn" {
-  count                  = var.vpn_num_instances
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = var.instance_type_vpn
-  subnet_id              = element(list(aws_subnet.public-subnet-1a.id, aws_subnet.public-subnet-1b.id), count.index)
+  subnet_id              = element(aws_subnet.public.*.id, 1)
   ebs_optimized          = true
   monitoring             = false
   key_name               = var.key_name
   vpc_security_group_ids = [aws_security_group.vpn_sg.id]
   source_dest_check      = true
-  network_interface = {
+  network_interface {
     network_interface_id = aws_network_interface.vpn.id
     device_index         = 0
   }
@@ -20,22 +19,22 @@ resource "aws_instance" "vpn" {
   }
 
   tags = {
-    Environment = "${var.env}"
-    Name        = "${var.hostname_vpn}${format("%02d", count.index + 1)}"
+    Environment = var.env
+    Name        = "${var.hostname_vpn}-01"
   }
 
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    private_key = file("${var.key_file}")
+    private_key = file(var.key_file)
     host        = aws_eip.eip_vpn.public_ip
   }
 
   provisioner "remote-exec" {
     inline = [
-      "sudo hostnamectl set-hostname ${var.hostname_vpn}}-${format("%02d", count.index + 1)}",
-      "sudo echo '${var.hostname_vpn}-${format("%02d", count.index + 1)}' > /etc/hostname",
-      "echo '127.0.0.1 ${var.hostname_vpn}-${format("%02d", count.index + 1)}' | sudo tee -a /etc/hosts",
+      "sudo hostnamectl set-hostname ${var.hostname_vpn}-01",
+      "sudo echo '${var.hostname_vpn}-01' > /etc/hostname",
+      "echo '127.0.0.1 ${var.hostname_vpn}-01' | sudo tee -a /etc/hosts",
       "sudo apt update -y && sudo DEBIAN_FRONTEND=noninteractive apt upgrade -y",
     ]
   }

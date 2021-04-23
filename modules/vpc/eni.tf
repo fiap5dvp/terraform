@@ -1,7 +1,5 @@
 resource "aws_network_interface" "vpn" {
-  count     = var.vpn_num_instances
-  subnet_id = element(list(aws_subnet.public-subnet-1a.id, aws_subnet.public-subnet-1b.id), count.index)
-
+  subnet_id = element(aws_subnet.public.*.id, 1)
 }
 
 resource "aws_network_interface_sg_attachment" "eni-vpn-sg-att" {
