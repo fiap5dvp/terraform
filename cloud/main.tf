@@ -26,7 +26,6 @@ module "eks-nodes" {
   cluster_version  = module.eks-cluster.cluster_version
   vpc_id           = module.vpc.vpc_id
   subnet_id_master = module.vpc.subnet_id_public_1
-  autoscaling_role = module.eks-cluster.autoscaling_role
   node_name        = "netflix"
   key_name         = "cloud"
 }

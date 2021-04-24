@@ -9,7 +9,6 @@ resource "aws_autoscaling_group" "asg" {
     var.subnet_id_master
   ]
 
-  service_linked_role_arn = var.autoscaling_role
 
   tag {
     key                 = "Name"

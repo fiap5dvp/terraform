@@ -1,6 +1,8 @@
 resource "aws_security_group" "default" {
   description = "${var.cluster_name}-Master Default Security Group"
   name        = "${var.cluster_name}-Master-Default"
+
+  vpc_id = var.vpc_id
 }
 
 resource "aws_security_group" "eks-master-sg" {

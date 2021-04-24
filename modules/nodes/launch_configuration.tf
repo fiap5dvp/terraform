@@ -9,7 +9,7 @@ resource "aws_launch_configuration" "launch_config" {
   iam_instance_profile        = aws_iam_instance_profile.node-group-instance-role.name
 
   root_block_device {
-    volume_type = "gp3"
+    volume_type = "gp2"
     volume_size = var.volume_size
   }
 }

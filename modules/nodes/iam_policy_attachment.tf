@@ -1,8 +1,3 @@
-resource "aws_iam_role_policy_attachment" "cluster-autoScaler-fullAccess" {
-  policy_arn = var.autoscaling_role
-  role       = aws_iam_role.eks-role-worker.name
-}
-
 resource "aws_iam_role_policy_attachment" "amazon-EC2-rolefor-SSM" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
   role       = aws_iam_role.eks-role-worker.name

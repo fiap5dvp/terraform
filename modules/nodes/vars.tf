@@ -56,4 +56,3 @@ variable "cluster_version" {}
 variable "vpc_id" {}
 variable "subnet_id_master" {}
 variable "node_name" {}
-variable "autoscaling_role" {}
