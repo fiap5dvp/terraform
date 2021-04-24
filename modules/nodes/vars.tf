@@ -1,10 +1,3 @@
-data "aws_vpc" "vpc_name" {
-  filter {
-    name   = "tag:Name"
-    values = ["*${var.vpc_name}*"]
-  }
-}
-
 data "template_file" "container_instance_base_cloud_config" {
   template = file("${path.module}/cloud-config.tpl")
 
@@ -60,7 +53,7 @@ variable "instance_type" {
 variable "eks_master_sg_id" {}
 variable "cluster_name" {}
 variable "cluster_version" {}
-variable "vpc_name" {}
+variable "vpc_id" {}
 variable "subnet_id_master" {}
 variable "node_name" {}
 variable "autoscaling_role" {}

@@ -43,7 +43,7 @@ resource "aws_security_group" "eks-worker-sg" {
     "kubernetes.io/cluster/${var.cluster_name}" = "owned"
   }
 
-  vpc_id = data.aws_vpc.vpc_name.id
+  vpc_id = var.vpc_id
 }
 
 resource "aws_security_group_rule" "egress_tcp_1025_sg" {

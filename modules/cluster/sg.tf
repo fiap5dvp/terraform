@@ -11,11 +11,11 @@ resource "aws_security_group" "eks-master-sg" {
     Name = "${var.cluster_name}-Master"
   }
 
-  vpc_id = data.aws_vpc.vpc_name.id
+  vpc_id = var.vpc_id
 }
 
 resource "aws_security_group_rule" "ingress_tcp_443_sg" {
-  cidr_blocks       = ["${chomp(data.http.myip.body)}/32", data.aws_vpc.vpc_name.cidr_block]
+  cidr_blocks       = ["${chomp(data.http.myip.body)}/32", data.aws_vpc.vpc_id.cidr_block]
   description       = "Default access"
   from_port         = "443"
   protocol          = "tcp"

@@ -1,37 +1,10 @@
-data "aws_vpc" "vpc_name" {
-  filter {
-    name   = "tag:Name"
-    values = ["*${var.vpc_name}*"]
-  }
-}
-
-data "aws_route_table" "rts" {
-  vpc_id = data.aws_vpc.vpc_name.id
-
-  filter {
-    name   = "tag:Name"
-    values = ["*${var.routetable_name}*"]
-  }
+data "aws_vpc" "vpc_id"{
+  id = var.vpc_id
 }
 
 variable "cluster_log_types" {
   type    = list(any)
   default = ["scheduler", "controllerManager", "audit", "api", "authenticator"]
-}
-
-variable "routetable_name" {
-  type    = string
-  default = "Default Public"
-}
-
-variable "availability_zone_master" {
-  type    = string
-  default = "us-east-1a"
-}
-
-variable "availability_zone_slave" {
-  type    = string
-  default = "us-east-1b"
 }
 
 data "http" "myip" {
@@ -64,15 +37,16 @@ variable "cluster_version" {
   description = "Cluster Version"
 }
 
-variable "vpc_name" {
+variable "vpc_id" {
   type        = string
-  description = "VPC Name that the cluster that will be created"
+  description = "VPC ID that the cluster that will be created"
 }
-variable "public_subnet_cidr_master" {
+
+variable "public_subnet_id_master" {
   type        = string
-  description = "Core network CIDR block"
+  description = "Core network id"
 }
-variable "public_subnet_cidr_slave" {
+variable "public_subnet_id_slave" {
   type        = string
-  description = "Secondy network CIDR block"
+  description = "Secondy network id"
 }

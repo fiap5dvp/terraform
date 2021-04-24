@@ -21,14 +21,6 @@ variable "architecture" {
   default = "amd64"
 }
 
-variable "key_name" {
-  description = "Public key to use on Ec2"
-}
-
-variable "key_file" {
-  description = "SSH privade key"
-}
-
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -86,4 +78,22 @@ variable "max_subnet_count" {
   type    = number
   default = 2
 
+}
+
+variable "public_cidr_1" {
+  type    = string
+  default = "10.60.1.0/24"
+}
+
+variable "public_cidr_2" {
+  type    = string
+  default = "10.60.2.0/24"
+}
+
+variable "public_az_1" {
+  default = "us-east-1a"
+}
+
+variable "public_az_2" {
+  default = "us-east-1b"
 }
