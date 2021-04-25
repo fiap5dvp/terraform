@@ -3,6 +3,7 @@ resource "aws_security_group" "default" {
   name        = "${var.cluster_name}-Master-Default"
 
   vpc_id = var.vpc_id
+
 }
 
 resource "aws_security_group" "eks-master-sg" {
@@ -21,7 +22,7 @@ resource "aws_security_group_rule" "ingress_tcp_443_sg" {
   description       = "Default access"
   from_port         = "443"
   protocol          = "tcp"
-  security_group_id = aws_security_group.eks-master-sg.id
+  security_group_id = aws_security_group.default.id
   to_port           = "443"
   type              = "ingress"
 }
