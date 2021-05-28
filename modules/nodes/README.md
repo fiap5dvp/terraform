@@ -25,6 +25,7 @@ No modules.
 | [aws_iam_role_policy_attachment.amazon-EKS-CNI-policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.amazon-EKS-worker-node-policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.cluster-autoScaler-fullAccess](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.databricks-bucket-readonly-access](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_launch_configuration.launch_config](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_configuration) | resource |
 | [aws_security_group.eks-worker-sg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_security_group_rule.egress_tcp_1025_sg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
@@ -44,7 +45,7 @@ No modules.
 | <a name="input_eks_master_sg_id"></a> [eks\_master\_sg\_id](#input\_eks\_master\_sg\_id) | n/a | `any` | n/a | yes |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | n/a | `string` | `"t2.large"` | no |
 | <a name="input_key_name"></a> [key\_name](#input\_key\_name) | Insert the name of public key | `any` | n/a | yes |
-| <a name="input_max_instances"></a> [max\_instances](#input\_max\_instances) | n/a | `number` | `1` | no |
+| <a name="input_max_instances"></a> [max\_instances](#input\_max\_instances) | n/a | `number` | `3` | no |
 | <a name="input_min_instances"></a> [min\_instances](#input\_min\_instances) | n/a | `number` | `1` | no |
 | <a name="input_node_name"></a> [node\_name](#input\_node\_name) | n/a | `any` | n/a | yes |
 | <a name="input_subnet_id_master"></a> [subnet\_id\_master](#input\_subnet\_id\_master) | n/a | `any` | n/a | yes |

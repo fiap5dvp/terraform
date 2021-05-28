@@ -8,17 +8,17 @@ The following providers are used by this module:
 | <a name="requirement_http"></a> [http](#requirement\_http) | >= 2.1.0 |
 
 
-## Resources
 
-The following resources are used by this module:
+## Resources
 
 | Name | Type |
 |------|------|
-| [aws_eks_cluster.eks_cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster) | resource |
+| [aws_eks_cluster.eks_cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster) | resource 
 | [aws_iam_policy.autoscaling](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_role.EKS-cluster-Autoscaler](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role.eks-role-master](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy_attachment.amazon-EKS-cluster-autoscaling](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role.eks-role-master](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy_attachment.amazon-EKS-cluster-policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.amazon-EKS-service-policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_route_table_association.subnet-association-master](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association) | resource |
@@ -33,9 +33,8 @@ The following resources are used by this module:
 | [aws_vpc.vpc_name](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc) | data source |
 | [http_http.myip](https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) | data source |
 
-## Required Inputs
-
 The following input variables are required:
+## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
@@ -54,11 +53,10 @@ The following input variables are required:
 
 The following outputs are exported:
 
-| Name | Description |
-|------|-------------|
-| <a name="output_cluster_name"></a> [cluster\_name](#output\_cluster\_name) | n/a |
-| <a name="output_cluster_version"></a> [cluster\_version](#output\_cluster\_version) | n/a |
-| <a name="output_eks_master_sg_id"></a> [eks\_master\_sg\_id](#output\_eks\_master\_sg\_id) | n/a |
-| <a name="output_subnet_id_master"></a> [subnet\_id\_master](#output\_subnet\_id\_master) | n/a |
-| <a name="output_subnet_id_slave"></a> [subnet\_id\_slave](#output\_subnet\_id\_slave) | n/a |
-| <a name="output_vpc_name"></a> [vpc\_name](#output\_vpc\_name) | n/a |
+| <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | n/a | `any` | n/a | yes |
+| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | n/a | `any` | n/a | yes |
+| <a name="input_public_subnet_cidr_master"></a> [public\_subnet\_cidr\_master](#input\_public\_subnet\_cidr\_master) | n/a | `any` | n/a | yes |
+| <a name="input_public_subnet_cidr_slave"></a> [public\_subnet\_cidr\_slave](#input\_public\_subnet\_cidr\_slave) | n/a | `any` | n/a | yes |
+| <a name="input_routetable_name"></a> [routetable\_name](#input\_routetable\_name) | n/a | `string` | `"Default Public"` | no |
+| <a name="input_vpc_name"></a> [vpc\_name](#input\_vpc\_name) | n/a | `any` | n/a | yes |
+
