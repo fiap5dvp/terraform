@@ -12,8 +12,8 @@ resource "aws_eks_cluster" "eks_cluster" {
     ]
     security_group_ids = [aws_security_group.default.id]
     subnet_ids = [
-      aws_subnet.subnet-master.id,
-      aws_subnet.subnet-slave.id
+      var.public_subnet_id_master,
+      var.public_subnet_id_slave
     ]
   }
 }

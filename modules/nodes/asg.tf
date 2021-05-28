@@ -8,7 +8,7 @@ resource "aws_autoscaling_group" "asg" {
   vpc_zone_identifier = [
     var.subnet_id_master
   ]
-  service_linked_role_arn = "arn:aws:iam::337161345835:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
+
 
   tag {
     key                 = "Name"
